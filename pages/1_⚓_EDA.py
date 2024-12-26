@@ -1,28 +1,38 @@
 import streamlit as st
 import pandas as pd
 
-#Cargar el DataFrame
-#@st.cache_data
-#def load_data():
-#    return pd.read_csv("data/StudentPerformanceFactors.csv")
-
-#df = load_data()
-
 st.header("PROYECTO FIFA - ANÁLISIS EXPLORATORIO DE DATOS")
-
-#st.image("utils/1241.jpg")
-
-#Cargamos los datos del archivo csv:
-#url='https://drive.google.com/file/d/1TS8BpC3CBTlEHlCSlHfIDlbgSE4jDL5q/view?usp=sharing'
-#url='https://drive.google.com/file/d/1G19ESAC7JIz9ziGDayPh7p7ASJc7r3SB/view?usp=sharing'
-#url='https://drive.google.com/file/d/1G19ESAC7JIz9ziGDayPh7p7ASJc7r3SB/view?usp=sharing'
-#url='https://drive.google.com/uc?id=' + url.split('/')[-2]
 
 df = pd.read_csv("data/fifaPlayers4.csv")
 
-#def main()
-st.write(df.head(5))
-
+with st.container():
+    col1, col2 = st.columns(2)
+    with col1:
+        respuesta = st.radio(
+            "Seleccione información:",
+            ["Sobre el DataFrame", "Número de registros","Número de columnas","Columnas","Edad de los jugadores", 
+            "Altura de los jugadores", "Peso de los jugadores"]
+        )
+    
+    with col2:
+        if respuesta == "Número de registros":
+            st.metric("Número de registros", df.shape[0])
+        elif respuesta == "Número de columnas":
+            st.metric("Número de columnas", df.shape[1])
+        elif respuesta == "Columnas":
+            st.subheader("Las columnas del DataFrame son:")
+            st.table(list(df.columns))
+        elif respuesta == "Sobre el DataFrame":
+            st.text("Sobre el DataFrame")
+        elif respuesta == "Edad de los jugadores":
+            st.subheader("Métricas:")
+            st.table(df['Age'].describe())
+        elif respuesta == "Altura de los jugadores":
+            st.subheader("Métricas:")
+            st.table(df['Height'].describe())
+        elif respuesta == "Peso de los jugadores":
+            st.subheader("Métricas:")
+            st.table(df['Weight'].describe())
 
 #st.header("ANALISIS EXPLORATORIO")
 
