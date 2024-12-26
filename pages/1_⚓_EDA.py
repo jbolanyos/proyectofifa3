@@ -15,9 +15,10 @@ st.header("PROYECTO FIFA - ANÁLISIS EXPLORATORIO DE DATOS")
 #Cargamos los datos del archivo csv:
 #url='https://drive.google.com/file/d/1TS8BpC3CBTlEHlCSlHfIDlbgSE4jDL5q/view?usp=sharing'
 #url='https://drive.google.com/file/d/1G19ESAC7JIz9ziGDayPh7p7ASJc7r3SB/view?usp=sharing'
-url='https://drive.google.com/file/d/1G19ESAC7JIz9ziGDayPh7p7ASJc7r3SB/view?usp=sharing'
-url='https://drive.google.com/uc?id=' + url.split('/')[-2]
-df = pd.read_csv(url)
+#url='https://drive.google.com/file/d/1G19ESAC7JIz9ziGDayPh7p7ASJc7r3SB/view?usp=sharing'
+#url='https://drive.google.com/uc?id=' + url.split('/')[-2]
+
+df = pd.read_csv("data/fifaPlayers4.csv")
 
 #def main()
 st.write(df.head(5))
